@@ -1,7 +1,7 @@
 # go-rest-api
 Go Rest Api
 
-Simple Web Serive using 
+Simple Web Service using 
 
 >-gorila/mux
 
