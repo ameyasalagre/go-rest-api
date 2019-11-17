@@ -3,12 +3,14 @@ package server
 import (
 	"log"
 	"net/http"
-
 	"github.com/go-rest-api/routes"
 	"github.com/gorilla/mux"
 )
 
-// Start Server
+/************************.
+*	Start the Server
+*	Port 8080
+************************/
 func Start() {
 	router := mux.NewRouter().StrictSlash(true)
 	routes.IntiateRoutes(router)
