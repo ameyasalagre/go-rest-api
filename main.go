@@ -6,13 +6,12 @@
 package main
 
 import (
-	"fmt"
 	"github.com/go-rest-api/server"
 )
+
 /************************.
 *	Call to The Server
 ************************/
 func main() {
-	fmt.Print("Hello Rest Api")
 	server.Start()
 }

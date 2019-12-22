@@ -13,7 +13,10 @@ import (
 ************************/
 func Start() {
 	router := mux.NewRouter().StrictSlash(true)
+	ConnectMongoDbClient()
 	routes.IntiateRoutes(router)
 	log.Println("Server Started at localhost:8080")
 	http.ListenAndServe(":8080", router)
+
+
 }
