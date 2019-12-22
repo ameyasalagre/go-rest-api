@@ -8,7 +8,6 @@ package main
 import (
 	"github.com/go-rest-api/server"
 )
-
 /************************.
 *	Call to The Server
 ************************/

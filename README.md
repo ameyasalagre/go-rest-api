@@ -1,12 +1,20 @@
 # go-rest-api
 Go Rest Api
-Simple Web Serive using 
--gorila/mux
+
+Simple Web Service using 
+
+>-gorila/mux
 
 TO DO
--REFACTOR
--MONGODB
--PLSQL
--REDIS
--DOCKER
--TEST CASES
+
+>REFACTOR
+
+>MONGODB
+
+>PLSQL
+
+>REDIS
+
+>DOCKER
+
+>TEST CASES

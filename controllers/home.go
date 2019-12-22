@@ -17,13 +17,6 @@ import (
 *	TO DO : ------
 *
 ******************************************/
-// You will be using this Trainer type later in the program
-type Trainer struct {
-	ip       string
-	Username string
-	Password string
-}
-
 func Home(w http.ResponseWriter, r *http.Request) {
 	collection :=  utils.ConnectAndGetMongoDbCollection("LoginApp", "users")
 	filter := bson.M{"ip": "192.168.0.103"}
