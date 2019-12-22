@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
 	"github.com/go-rest-api/modules"
+	"github.com/go-rest-api/utils"
 	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 /****************************************.
@@ -25,37 +25,14 @@ type Trainer struct {
 }
 
 func Home(w http.ResponseWriter, r *http.Request) {
-	// fmt.Fprintf(w, "Welcome home!")
-	// Set client options
-	clientOptions := options.Client().ApplyURI("mongodb+srv://ameyasalagre:pass12345@cluster0-prqsb.mongodb.net/")
-
-	// Connect to MongoDB
-	client, err := mongo.Connect(context.TODO(), clientOptions)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	// Check the connection
-	err = client.Ping(context.TODO(), nil)
-
-	collection := client.Database("LoginApp").Collection("users")
-
+	collection :=  utils.ConnectAndGetMongoDbCollection("LoginApp", "users")
 	filter := bson.M{"ip": "192.168.0.103"}
 	result := modules.User{}
-
-	err = collection.FindOne(context.TODO(), filter).Decode(&result)
+	err := collection.FindOne(context.TODO(), filter).Decode(&result)
 	if err != nil {
 		log.Fatal(err)
 	}
+	go utils.CloseMongoDbClient()
+	fmt.Fprintf(w, result.Username)
 
-	fmt.Printf("Found a single document: %+v\n", result)
-
-	fmt.Fprintf(w, result.Password)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Println("Connected to MongoDB!")
 }
